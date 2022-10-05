@@ -1,10 +1,12 @@
 using ASPNETCoreSamen.Database;
+using ASPNETCoreSamen.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IMovieDatabase, MovieDatabase>();
+builder.Services.AddTransient<IMovieService, MovieService>();
 
 var app = builder.Build();
 

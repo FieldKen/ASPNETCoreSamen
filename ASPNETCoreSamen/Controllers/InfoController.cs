@@ -5,6 +5,7 @@ namespace ASPNETCoreSamen.Controllers
 {
     public class InfoController : Controller
     {
+        [HttpGet]
         public IActionResult About()
         {
             var vm = new InfoViewModel
