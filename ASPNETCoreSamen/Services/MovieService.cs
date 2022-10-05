@@ -17,6 +17,11 @@ namespace ASPNETCoreSamen.Services
             movieDatabase.Insert(movie);
         }
 
+        public Movie GetMovie(int id)
+        {
+            return movieDatabase.GetMovie(id);
+        }
+
         public IEnumerable<Movie> GetMovies()
         {
             return movieDatabase.GetMovies();

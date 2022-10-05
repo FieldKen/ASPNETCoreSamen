@@ -8,6 +8,7 @@
 		<tr>
 			<th>Title</th>
 			<th>Description</th>
+			<th>Detail</th>
 		</tr>
 	</thead>
 
@@ -17,6 +18,7 @@
 			<tr>
 				<td>@item.Title</td>
 				<td>@item.Description</td>
+				<td><a asp-controller="Movie" asp-action="Detail" asp-route-id="@item.Id">View movie</a></td>
 			</tr>
 		}
 	</tbody>

@@ -48,12 +48,26 @@ namespace ASPNETCoreSamen.Controllers
                 };
 
                 movieService.Insert(movie);
+                return RedirectToAction(nameof(Index));
             }
 
-
-
-
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Detail([FromRoute] int id)
+        {
+            var movie = movieService.GetMovie(id);
+
+            var vm = new MovieDetailViewModel
+            {
+                Title = movie.Title,
+                Description = movie.Description,
+                Genre = movie.Genre,
+                Rating = movie.Rating
+            };
+
+            return View(vm);
         }
     }
 }

@@ -1,0 +1,14 @@
+﻿@model MovieDetailViewModel
+<label asp-for="Title"></label>
+<p>@Model.Title</p>
+
+<label asp-for="Description"></label>
+<p>@Model.Description</p>
+
+<label asp-for="Genre"></label>
+<p>@Model.Genre</p>
+
+<label asp-for="Rating"></label>
+<p>@Model.Rating</p>
+
+<a asp-controller="Movie" asp-action="Index">Terug naar overzicht</a>
