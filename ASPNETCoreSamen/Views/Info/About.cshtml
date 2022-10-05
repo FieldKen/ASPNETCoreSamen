@@ -1,0 +1,9 @@
+﻿@model InfoViewModel
+
+<h1>Dag @Model.FirstName @Model.LastName</h1>
+
+<p>
+	Jij bent @Model.Age jaar oud.
+	<br />
+	Dat wilt zeggen dat jij @(Model.Adult ? "volwassen" : "minderjarig") bent!
+</p>
