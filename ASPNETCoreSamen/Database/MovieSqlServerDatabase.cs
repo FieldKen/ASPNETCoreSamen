@@ -1,14 +1,17 @@
 ﻿using ASPNETCoreSamen.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace ASPNETCoreSamen.Database
 {
 	public class MovieSqlServerDatabase : IMovieDatabase
 	{
+        private DbSet<Movie> movies;
         private MovieDbContext movieDbContext;
 
         public MovieSqlServerDatabase(MovieDbContext movieDbContext)
         {
             this.movieDbContext = movieDbContext;
+            movies = movieDbContext.Movies;
         }
 
         public void Delete(int id)
@@ -16,25 +19,23 @@ namespace ASPNETCoreSamen.Database
             Movie movie = GetMovie(id);
             if (movie != null)
             {
-                movieDbContext.Movies.Remove(movie);
-                movieDbContext.SaveChanges();
+                movies.Remove(movie);
             }
         }
 
         public Movie GetMovie(int id)
         {
-            return movieDbContext.Movies.FirstOrDefault(m => m.Id == id);
+            return movies.FirstOrDefault(m => m.Id == id);
         }
 
         public IEnumerable<Movie> GetMovies()
         {
-            return movieDbContext.Movies;
+            return movies;
         }
 
         public Movie Insert(Movie movie)
         {
-            movieDbContext.Movies.Add(movie);
-            movieDbContext.SaveChanges();
+            movies.Add(movie);
             return movie;
         }
 
@@ -48,7 +49,6 @@ namespace ASPNETCoreSamen.Database
                 movieToUpdate.Genre = movie.Genre;
                 movieToUpdate.Rating = movie.Rating;
             }
-            movieDbContext.SaveChanges();
         }
     }
 }

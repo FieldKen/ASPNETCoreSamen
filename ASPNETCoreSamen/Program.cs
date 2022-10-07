@@ -10,9 +10,6 @@ var connectionString = builder.Configuration.GetConnectionString("SqlServerConne
 builder.Services.AddDbContext<MovieDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddTransient<IMovieDatabase, MovieSqlServerDatabase>();
 //builder.Services.AddSingleton<IMovieDatabase, MovieDatabase>();
-
-
-
 builder.Services.AddTransient<IMovieService, MovieService>();
 
 var app = builder.Build();
