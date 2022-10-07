@@ -1,11 +1,18 @@
 using ASPNETCoreSamen.Database;
 using ASPNETCoreSamen.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IMovieDatabase, MovieDatabase>();
+var connectionString = builder.Configuration.GetConnectionString("SqlServerConnection");
+builder.Services.AddDbContext<MovieDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddTransient<IMovieDatabase, MovieSqlServerDatabase>();
+//builder.Services.AddSingleton<IMovieDatabase, MovieDatabase>();
+
+
+
 builder.Services.AddTransient<IMovieService, MovieService>();
 
 var app = builder.Build();
