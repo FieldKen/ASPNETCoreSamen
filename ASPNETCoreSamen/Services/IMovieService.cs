@@ -4,8 +4,10 @@ namespace ASPNETCoreSamen.Services
 {
     public interface IMovieService
     {
-        void Insert(Movie movie);
+        Movie Insert(Movie movie);
         Movie GetMovie(int id);
         IEnumerable<Movie> GetMovies();
+        void Update(int id, Movie movie);
+        void Delete(int id);
     }
 }

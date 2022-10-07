@@ -3,23 +3,35 @@
 <h1>Movies</h1>
 <a asp-controller="Movie" asp-action="Create">Add movie</a>
 
+@if (Model.Count() != 0)
+{
 <table>
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Description</th>
-			<th>Detail</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		@foreach (var item in Model)
-		{
+		<thead>
 			<tr>
-				<td>@item.Title</td>
-				<td>@item.Description</td>
-				<td><a asp-controller="Movie" asp-action="Detail" asp-route-id="@item.Id">View movie</a></td>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Detail</th>
+				<th>Edit</th>
+				<th>Delete</th>
 			</tr>
-		}
-	</tbody>
-</table>
+		</thead>
+
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>@item.Title</td>
+					<td>@item.Description</td>
+					<td><a asp-controller="Movie" asp-action="Detail" asp-route-id="@item.Id">View movie</a></td>
+					<td><a asp-controller="Movie" asp-action="Edit" asp-route-id="@item.Id">Edit movie</a></td>
+					<td><a asp-controller="Movie" asp-action="Delete" asp-route-id="@item.Id">Delete movie</a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<br />
+	<strong>Er zijn geen films beschikbaar</strong>
+}

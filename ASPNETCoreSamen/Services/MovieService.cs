@@ -12,9 +12,9 @@ namespace ASPNETCoreSamen.Services
             this.movieDatabase = movieDatabase;
         }
 
-        public void Insert(Movie movie)
+        public Movie Insert(Movie movie)
         {
-            movieDatabase.Insert(movie);
+            return movieDatabase.Insert(movie);
         }
 
         public Movie GetMovie(int id)
@@ -25,6 +25,16 @@ namespace ASPNETCoreSamen.Services
         public IEnumerable<Movie> GetMovies()
         {
             return movieDatabase.GetMovies();
+        }
+
+        public void Update(int id, Movie movie)
+        {
+            movieDatabase.Update(id, movie);
+        }
+
+        public void Delete(int id)
+        {
+            movieDatabase.Delete(id);
         }
     }
 }

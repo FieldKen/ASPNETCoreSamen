@@ -64,7 +64,6 @@ namespace ASPNETCoreSamen.Database
 
 		public void Update(int id, Movie movie)
 		{
-			//AUTOMAPPER D:
 			Movie movieToUpdate = GetMovie(id);
 			if (movieToUpdate != null) 
 			{
